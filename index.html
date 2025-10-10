@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AreebVerse</title>
-    <!-- FAVICON: Replace this href with the URL to your favicon image -->
+    <!-- FAVICON: Original file path -->
     <link rel="icon" href="/Images/favicon.png">
     
     <!-- Tailwind CSS -->
@@ -12,8 +12,8 @@
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Inter:wght@700&family=VT323&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Inter:wght@700&family=VT323&family=Permanent+Marker&display=swap" rel="stylesheet">
     
     <!-- Chart.js for Power Grids -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -45,6 +45,32 @@
             --accent-color: #9333ea; /* Purple for dark mode */
             --accent-hover-color: #a855f7;
             --grid-line-color: #4b5563;
+        }
+
+        .subtitle-container {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        html.dark .subtitle-container {
+            background-color: rgba(31, 41, 55, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .welcome-note {
+            background-color: #fef9c3; /* Yellowish paper */
+            color: #1f2937;
+            border: 2px solid #a16207; /* Darker yellow */
+        }
+        html.dark .welcome-note {
+            background-color: #374151;
+            color: #f9fafb;
+            border-color: #6b7280;
         }
 
         /* --- END DARK MODE --- */
@@ -216,6 +242,21 @@
                 left: 15px;
                 right: auto;
             }
+            
+            /* New Mobile Typography Adjustments */
+            .animate-section h2.text-5xl,
+            .animate-section h2.text-6xl {
+                font-size: 3rem; /* equivalent to text-5xl */
+                line-height: 1.1;
+            }
+
+            #contact .comic-panel h2 {
+                font-size: 4.5rem; /* equivalent to text-7xl */
+            }
+
+            .narration-box {
+                font-size: 1.5rem; /* from 2rem */
+            }
         }
         
         /* --- Adaptive Header Styles --- */
@@ -284,6 +325,10 @@
             background-color: #f3f4f6; /* Solid color for loading */
             background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23d1d5db" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zM6 5v1H5z"/%3E%3C/g%3E%3C/svg%3E');
             transition: opacity 0.5s ease-out;
+        }
+        html.dark #loading-screen {
+            background-color: #1f2937; /* Dark BG for dark mode */
+            background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%234b5563" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zM6 5v1H5z"/%3E%3C/g%3E%3C/svg%3E');
         }
         .loader {
             border: 8px solid var(--shadow-color);
@@ -757,7 +802,7 @@
         }
 
         #parallax-bg-light {
-            /* IMPORTANT: Replace this placeholder with the URL for your DAY image */
+            /* Original file path */
             background-image: url('/Images/cityscape_background_lightmode5.png');
             opacity: 1;
         }
@@ -766,7 +811,7 @@
         }
 
         #parallax-bg-dark {
-            /* IMPORTANT: Replace this placeholder with the URL for your NIGHT image */
+            /* Original file path */
             background-image: url('/Images/cityscape_background_darkmode5.png');
             opacity: 0;
         }
@@ -840,7 +885,7 @@
 
     </style>
 </head>
-<body style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+<body style="transition: opacity 0.5s ease-in-out;">
 
     <div id="parallax-bg-light" class="parallax-bg"></div>
     <div id="parallax-bg-dark" class="parallax-bg"></div>
@@ -856,44 +901,49 @@
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="relative">
                 <a href="#home" id="your-name" class="nav-link relative z-10">
-                    <!-- IMPORTANT: Replace these placeholder srcs with the URLs to your animated GIF logos -->
+                    <!-- Original file paths -->
                     <img id="your-name-logo-light" src="/Images/Gifs/Amazing_SpidermanSuit.gif" alt="AreebVerse Logo Light Mode">
                     <img id="your-name-logo-dark" src="/Images/Gifs/Venom.gif" alt="AreebVerse Logo Dark Mode" class="hidden">
                 </a>
             </div>
-            <div class="hidden md:flex flex-nowrap items-center space-x-2 lg:space-x-3 relative z-10">
-                <a id="nav-link-about" href="#about" class="text-lg nav-link">Origin</a>
-                <a id="nav-link-skills" href="#skills" class="text-lg nav-link">Powers</a>
-                <a id="nav-link-timeline" href="#timeline" class="text-lg nav-link">Journey</a>
-                <a id="nav-link-portfolio" href="#portfolio" class="text-lg nav-link">Missions</a>
-                <a id="nav-link-hobbies" href="#hobbies" class="text-lg nav-link">Side Quests</a>
-                <a id="nav-link-contact" href="#contact" class="text-lg nav-link">Next Issue?</a>
+
+            <!-- Wrapper for right-side controls -->
+            <div class="flex items-center space-x-2">
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex flex-nowrap items-center space-x-2 lg:space-x-3">
+                    <a id="nav-link-about" href="#about" class="text-lg nav-link">Origin</a>
+                    <a id="nav-link-skills" href="#skills" class="text-lg nav-link">Powers</a>
+                    <a id="nav-link-timeline" href="#timeline" class="text-lg nav-link">Journey</a>
+                    <a id="nav-link-portfolio" href="#portfolio" class="text-lg nav-link">Missions</a>
+                    <a id="nav-link-hobbies" href="#hobbies" class="text-lg nav-link">Side Quests</a>
+                    <a id="nav-link-contact" href="#contact" class="text-lg nav-link">Next Issue?</a>
+                </div>
+                <!-- Theme Toggle (Visible on all screen sizes) -->
                 <button id="theme-toggle" class="w-12 h-12 flex items-center justify-center rounded-full focus:outline-none">
                     <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                     <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 7.072l.707-.707a1 1 0 10-1.414-1.414l-.707.707a1 1 0 001.414 1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-3xl">☰</button>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-3xl">☰</button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#about" class="block py-2 text-xl nav-link">Origin</a>
-            <a href="#skills" class="block py-2 text-xl nav-link">Powers</a>
-            <a href="#timeline" class="block py-2 text-xl nav-link">Journey</a>
-            <a href="#portfolio" class="block py-2 text-xl nav-link">Missions</a>
-            <a href="#hobbies" class="block py-2 text-xl nav-link">Side Quests</a>
-            <a href="#contact" class="block py-2 text-xl nav-link">Next Issue?</a>
+            <a id="nav-link-about" href="#about" class="block py-2 text-xl nav-link">Origin</a>
+            <a id="nav-link-skills" href="#skills" class="block py-2 text-xl nav-link">Powers</a>
+            <a id="nav-link-timeline" href="#timeline" class="block py-2 text-xl nav-link">Journey</a>
+            <a id="nav-link-portfolio" href="#portfolio" class="block py-2 text-xl nav-link">Missions</a>
+            <a id="nav-link-hobbies" href="#hobbies" class="block py-2 text-xl nav-link">Side Quests</a>
+            <a id="nav-link-contact" href="#contact" class="block py-2 text-xl nav-link">Next Issue?</a>
         </div>
     </header>
 
     <main class="container mx-auto p-4 md:p-8" style="opacity: 0;">
 
         <section id="home" class="text-center animate-section">
-            <h2 class="text-4xl md:text-5xl mb-8" data-text="Areeb The Amazing...">Areeb The Amazing...</h2>
-            <div class="comic-panel p-4">
-                <h1 id="dynamic-title" class="text-5xl md:text-7xl mb-4 h-24 flex items-center justify-center whitespace-nowrap"></h1>
-                <img id="light-mode-hero" src="/Images/Batman_ThemedComicPanel.png" alt="Areeb in a classic heroic pose during the day" class="mx-auto w-full max-w-4xl rounded">
-                <img id="dark-mode-hero" src="/Images/Digital_Horizon.png" alt="Areeb in a stealthy, dark-mode pose at night" class="mx-auto w-full max-w-4xl rounded">
-                <p class="text-xl mt-4 max-w-2xl mx-auto">Thanks for visiting! May your life be a grand adventure, as I aim to make mine.</p>
+            <!-- IMPORTANT: Replace placeholder with your local PNG -->
+            <img src="/Images/AreebVerseLogo.png" alt="Welcome to the AreebVerse" class="mx-auto w-full max-w-5xl rounded mb-8">
+            <div class="welcome-note animate-on-scroll p-6 max-w-lg mx-auto shadow-lg transform -rotate-2 opacity-0">
+                <p class="text-xl max-w-2xl mx-auto" style="font-family: 'Permanent Marker', cursive;">Thanks for visiting! May your life be a grand adventure, as I aim to make mine.</p>
             </div>
         </section>
 
@@ -913,7 +963,10 @@
                             </div>
                         </div>
                         <div class="text-lg">
-                            <h3 class="text-4xl mb-2 glitched-text">Every Hero Has An Origin Story...</h3>
+                            <h3 class="text-4xl mb-2 glitched-text flex items-baseline gap-x-3">
+                                <span>Every Hero Has An Origin Story...</span>
+                                <span id="easter-egg-title" class="text-2xl" style="font-family: 'VT323', monospace; color: var(--accent-color);"></span>
+                            </h3>
                             <p class="text-sm secondary-text italic my-2">(Pst! Move your mouse over the text below for a special effect. And whatever you do, DON'T click that button.)</p>
                             <div id="original-bio" class="space-y-4">
                                <p>And this is mine. I’m Areeb Yousuf — a software engineer, entrepreneur, and student at the University of Central Florida (UCF) who has teamed up with giants like NASA and Nike.</p>
@@ -928,7 +981,7 @@
                 </div>
             </div>
         </section>
-
+        
         <div class="section-divider">
             <div class="narration-box">With great power...</div>
         </div>
@@ -943,7 +996,11 @@
                     </div>
                     <div class="border-t-4 border-dashed" style="border-color: var(--shadow-color); margin-top: 1rem; padding-top: 1rem;">
                         <h3 class="text-3xl text-center mb-2 glitched-text">Complete Power Grid</h3>
-                        <p class="text-center text-sm secondary-text mb-4">(Note: Not to scale. Click to add. Drag to expand.)</p>
+                        <div class="text-center mb-4">
+                            <div class="subtitle-container">
+                                <p class="text-sm secondary-text">(Note: Not to scale. Click to add. Drag to expand.)</p>
+                            </div>
+                        </div>
                         <div class="flex justify-center flex-wrap gap-2 mb-6">
                             <button class="filter-button active px-4 py-2 text-lg" data-filter="all">All</button>
                             <button class="filter-button px-4 py-2 text-lg" data-filter="non-technical">Non-Technical</button>
@@ -961,7 +1018,11 @@
 
         <section id="timeline" class="animate-section overflow-y-auto">
             <h2 class="text-5xl text-center mb-8" data-text="MY JOURNEY">MY JOURNEY</h2>
-            <p class="text-center secondary-text text-lg mb-4">Click on a card to see the comic!</p>
+            <div class="text-center mb-4">
+                <div class="subtitle-container">
+                    <p class="secondary-text text-lg">Click on a card to see the comic!</p>
+                </div>
+            </div>
             <div class="timeline-container">
                 <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/Gojo_ComicPanel.png"><h3 class="text-3xl glitched-text">Furry Sidekick: Gojo</h3><p>Rescued a clever cat named <span id="gojo-link">Gojo</span>, who became my loyal companion.</p></div></div>
                 <div class="timeline-item right"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/JourneyToUCF_ComoicBookPanel.png"><h3 class="text-3xl glitched-text">University of Central Florida (UCF)</h3><p>Declared a Computer Science major.</p></div></div>
@@ -970,12 +1031,12 @@
                 <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/Mentorship_ComicPanel.png"><h3 class="text-3xl glitched-text">Started Mentoring</h3><p>Began guiding and supporting peers, helping them navigate academic, professional, and personal growth opportunities, while encouraging involvement in volunteering and leadership roles.</p></div></div>
                 <div class="timeline-item right"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/FE_ComicPanel.png"><h3 class="text-3xl glitched-text">Passing the Foundation Exam</h3><p>Completed the mandatory exam required for all Computer Science students to continue toward graduation.</p></div></div>
                 <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/NASApt1_ComicPanel.jpg"><h3 class="text-3xl glitched-text">NASA pt1</h3><p>Contributed to the Artemis II & III missions.</p></div></div>
-                <div class="timeline-item right"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images\Comics\ShellHacks_ComicPanel.png"><h3 class="text-3xl glitched-text">ShellHacks</h3><p>Attended my first hackathon—the largest in Florida—and worked on a smart mobility cane called AR-botics.</p></div></div>
-                <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images\Comics\NASApt2_ComicPanel.jpg"><h3 class="text-3xl glitched-text">NASA pt2</h3><p>Continued contributions to the Artemis II & III missions.</p></div></div>
-                <div class="timeline-item right"><div class="timeline-content comic-panel cursor-pointer" data-image="https://placehold.co/800x1200/e2e8f0/1f2937?text=Mentorship"><h3 class="text-3xl glitched-text">Mentorship & Community Engagement</h3><p>Continued mentoring peers, volunteered in community initiatives, and became active in clubs such as SHPE, NSBE, SWE, and AI@UCF. Provided guidance and support to help others grow academically, professionally, and personally.</p></div></div>
-                <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images\Comics\CyberCert_ComicPanel.png"><h3 class="text-3xl glitched-text">Cybersecurity Certification</h3><p>Earned a Cybersecurity certification through TestOut.</p></div></div>
-                <div class="timeline-item right"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images\Comics\TauBetaPi_ComicPanel.png"><h3 class="text-3xl glitched-text">Tau Beta Pi</h3><p>Invited to join the national engineering honor society for academic excellence.</p></div></div>
-                <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images\Comics\Nike_ComicPanel.png"><h3 class="text-3xl glitched-text">Nike</h3><p>Worked in Global Tech developing AI tools.</p></div></div>
+                <div class="timeline-item right"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/ShellHacks_ComicPanel.png"><h3 class="text-3xl glitched-text">ShellHacks</h3><p>Attended my first hackathon—the largest in Florida—and worked on a smart mobility cane called AR-botics.</p></div></div>
+                <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/NASApt2_ComicPanel.jpg"><h3 class="text-3xl glitched-text">NASA pt2</h3><p>Continued contributions to the Artemis II & III missions.</p></div></div>
+                <div class="timeline-item right"><div class="timeline-content comic-panel cursor-pointer" data-image="https://placehold.co/800x1200/e2e8f0/1f2937?text=Mentorship"><h3 class="text-3xl glitched-text""><h3 class="text-3xl glitched-text">Mentorship & Community Engagement</h3><p>Continued mentoring peers, volunteered in community initiatives, and became active in clubs such as SHPE, NSBE, SWE, and AI@UCF. Provided guidance and support to help others grow academically, professionally, and personally.</p></div></div>
+                <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/CyberCert_ComicPanel.png"><h3 class="text-3xl glitched-text">Cybersecurity Certification</h3><p>Earned a Cybersecurity certification through TestOut.</p></div></div>
+                <div class="timeline-item right"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/TauBetaPi_ComicPanel.png"><h3 class="text-3xl glitched-text">Tau Beta Pi</h3><p>Invited to join the national engineering honor society for academic excellence.</p></div></div>
+                <div class="timeline-item left"><div class="timeline-content comic-panel cursor-pointer" data-image="/Images/Comics/Nike_ComicPanel.png"><h3 class="text-3xl glitched-text">Nike</h3><p>Worked in Global Tech developing AI tools.</p></div></div>
             </div>
         </section>
         
@@ -986,7 +1047,11 @@
         <section id="portfolio" class="animate-section">
             <div class="w-full max-w-6xl mx-auto">
                 <h2 class="text-5xl text-center mb-8" data-text="MY WORK">MY WORK</h2>
-                <p class="text-center secondary-text text-lg mb-4">Click a card to flip for more details!</p>
+                <div class="text-center mb-4">
+                    <div class="subtitle-container">
+                        <p class="secondary-text text-lg">Click a card to flip for more details!</p>
+                    </div>
+                </div>
                 <div class="grid grid-cols-1 md-grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card-container h-96"><div class="card-inner"><div class="card-face comic-panel"><img src="/Images/platformer.png" alt="Portfolio Project 1" class="w-full h-48 object-cover border-b-4 border-gray-800"><div class="p-4 flex-grow flex flex-col justify-center"><h3 class="text-3xl mb-2 glitched-text">Platformer Game</h3><p>Built a PyGame platformer with custom levels and character mechanics.</p></div></div><div class="card-face card-back comic-panel p-4 flex flex-col justify-center text-center"><h4 class="text-2xl mb-2">Game Time</h4><p class="text-sm"><strong>Challenge:</strong> The world needed more fun!<br><strong>Mission:</strong> To design and build an engaging platformer with unique levels, dynamic character movement, and satisfying game feel for players.</p></div></div></div>
                     <div class="card-container h-96"><div class="card-inner"><div class="card-face comic-panel"><img src="/Images/parkpal.png" alt="Portfolio Project 2" class="w-full h-48 object-cover border-b-4 border-gray-800"><div class="p-4 flex-grow flex flex-col justify-center"><h3 class="text-3xl mb-2 glitched-text">ParkPal</h3><p>Full-stack app helping users check wait times and plan trips for theme parks worldwide.</p></div></div><div class="card-face card-back comic-panel p-4 flex flex-col justify-center text-center"><h4 class="text-2xl mb-2">Find Your Thrill</h4><p class="text-sm"><strong>Challenge:</strong> Long lines and chaotic park days!<br><strong>Mission:</strong> Develop a full-stack web and mobile app using the MERN stack to provide real-time wait times and trip planning tools for theme park goers.</p></div></div></div>
@@ -1057,7 +1122,7 @@
         <section id="contact" class="animate-section">
             <div class="w-full max-w-4xl mx-auto text-center">
                  <div class="comic-panel p-8">
-                     <img src="/Images/Until_nextTime_ComicPanel.png" alt="Epic final art piece" class="w-full rounded mb-6 border-4" style="border-color: var(--border-color)">
+                     <!-- <img src="/Images/Until_nextTime_ComicPanel.png" alt="Epic final art piece" class="w-full rounded mb-6 border-4" style="border-color: var(--border-color)"> -->
                      <h2 class="text-6xl md:text-8xl glitched-text" data-text="THE END...?">THE END...?</h2>
                      <p class="text-2xl my-4" style="font-family: 'Bangers', cursive; letter-spacing: 1px;">Thanks for stopping by!</p>
                      <p class="text-lg secondary-text mb-6">Let's connect for the next adventure.</p>
@@ -1186,7 +1251,6 @@
                     easing: 'easeInOutQuad',
                     complete: () => {
                         loadingScreen.style.display = 'none';
-                        document.body.style.opacity = 1;
                         document.querySelector('header').style.opacity = 1;
                         initPortfolio();
                     }
@@ -1320,16 +1384,24 @@
             const sections = document.querySelectorAll('.animate-section');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+                    const id = entry.target.getAttribute('id');
+                    // Use a robust selector that works for both desktop and mobile nav links
+                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (!navLink) return;
+
+                    if (entry.isIntersecting) {
+                        // When a new section becomes the primary one on screen, update all links
                         document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('nav-active'));
-                        const id = entry.target.getAttribute('id');
-                        const activeLink = document.querySelector(`#nav-link-${id}`);
-                        if (activeLink) {
-                            activeLink.classList.add('nav-active');
+                        
+                        // Only add the active class if the link is not the main logo
+                        if (navLink.id !== 'your-name') {
+                            navLink.classList.add('nav-active');
                         }
                     }
                 });
-            }, { threshold: 0.6 });
+            }, { 
+                rootMargin: "-50% 0px -50% 0px" // This creates a horizontal line at the vertical center of the viewport
+            });
 
             sections.forEach(section => observer.observe(section));
         }
@@ -1395,7 +1467,7 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             const animationParams = {
-                                targets: entry.target.querySelectorAll('.comic-panel:not(.card-face), h2'),
+                                targets: entry.target.querySelectorAll('.comic-panel:not(.card-face), h2, .animate-on-scroll'),
                                 opacity: [0, 1],
                                 scale: [0.9, 1],
                                 duration: 800,
@@ -1448,8 +1520,8 @@
             });
 
             // --- Interactive Elements ---
-            // Dynamic Title
-            const dynamicTitle = document.getElementById('dynamic-title');
+            // Dynamic Title Easter Egg
+            const dynamicTitle = document.getElementById('easter-egg-title');
             const words = ['Student', 'Engineer', 'Entrepreneur', 'Builder', 'Explorer', 'Dreamer', 'Creator', 'Innovator', 'Creative', 'Storyteller', 'Superhero'];
             let wordIndex = 0;
             function changeWord() {
@@ -1457,43 +1529,129 @@
                     complete: () => {
                         wordIndex = (wordIndex + 1) % words.length;
                         dynamicTitle.innerHTML = words[wordIndex].split('').map(c => `<span class='letter'>${c}</span>`).join('');
-                        anime({ targets: '#dynamic-title .letter', translateY: [40, 0], opacity: [0, 1], easing: 'easeOutExpo', duration: 1200, delay: anime.stagger(50) });
+                        anime({ targets: '#easter-egg-title .letter', translateY: [20, 0], opacity: [0, 1], easing: 'easeOutExpo', duration: 600, delay: anime.stagger(30) });
                     }
-                }).add({ targets: '#dynamic-title .letter', translateY: [0, -40], opacity: [1, 0], easing: 'easeInExpo', duration: 1000, delay: anime.stagger(50, {direction: 'reverse'}) });
+                }).add({ targets: '#easter-egg-title .letter', translateY: [0, -20], opacity: [1, 0], easing: 'easeInExpo', duration: 500, delay: anime.stagger(30, {direction: 'reverse'}) });
             }
             changeWord(); 
-            setInterval(changeWord, 4000);
+            setInterval(changeWord, 3000);
 
-            // Bio Text Color Hover Effect
+            // Bio Text Magnet Repel Effect
             const bioContainer = document.getElementById('original-bio');
-            const paragraphs = bioContainer.querySelectorAll('p');
-            paragraphs.forEach(p => {
-                p.innerHTML = p.textContent.replace(/\S+/g, (word) => {
-                    const chars = word.split('').map(char => `<span class="char">${char}</span>`).join('');
-                    return `<span style="display: inline-block;">${chars}</span>`;
+            if (bioContainer) {
+                const bioParagraphs = bioContainer.querySelectorAll('p');
+                bioParagraphs.forEach(p => {
+                    p.innerHTML = p.textContent.replace(/\S+/g, (word) => {
+                        const charsHTML = word.split('').map(char => `<span class="char">${char}</span>`).join('');
+                        return `<span style="display: inline-block;">${charsHTML}</span>`;
+                    });
                 });
-            });
 
-            const chars = document.querySelectorAll('#original-bio .char');
-            const bioHoverColors = ['#ef4444', '#f97316', '#22c55e', '#3b82f6', '#eab308', '#8b5cf6', '#d946ef', '#ec4899'];
-            chars.forEach(char => {
-                char.addEventListener('mouseenter', () => {
-                    anime({
-                        targets: char,
-                        color: bioHoverColors[anime.random(0, bioHoverColors.length - 1)],
-                        duration: 300,
-                        easing: 'easeInOutQuad'
+                const bioChars = Array.from(document.querySelectorAll('#original-bio .char'));
+                let bioCharRects = [];
+                
+                // This function is called once the section is visible to get correct initial positions of letters
+                updateRects = () => {
+                    bioCharRects = bioChars.map(char => char.getBoundingClientRect());
+                };
+
+                const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+                if (!isTouchDevice) {
+                    bioContainer.addEventListener('mousemove', (e) => {
+                        const mouseX = e.clientX;
+                        const mouseY = e.clientY;
+                        const radius = 100; // The radius of the magnetic field
+                        const maxPush = 25; // How far the letters can be pushed at maximum force
+
+                        bioChars.forEach((char, index) => {
+                            if (!bioCharRects[index]) return;
+
+                            const { left, top, width, height } = bioCharRects[index];
+                            const charCenterX = left + width / 2;
+                            const charCenterY = top + height / 2;
+
+                            const deltaX = mouseX - charCenterX;
+                            const deltaY = mouseY - charCenterY;
+                            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                            if (distance < radius) {
+                                const pushFactor = 1 - (distance / radius);
+                                const pushX = -(deltaX / distance) * maxPush * pushFactor;
+                                const pushY = -(deltaY / distance) * maxPush * pushFactor;
+                                
+                                anime({
+                                    targets: char,
+                                    translateX: pushX,
+                                    translateY: pushY,
+                                    scale: 1.2, // Make letters slightly bigger
+                                    duration: 100,
+                                    easing: 'easeOutQuad'
+                                });
+                            } else {
+                                 anime({
+                                    targets: char,
+                                    translateX: 0,
+                                    translateY: 0,
+                                    scale: 1,
+                                    duration: 300,
+                                    easing: 'easeOutQuad'
+                                });
+                            }
+                        });
                     });
-                });
-                char.addEventListener('mouseleave', () => {
-                    anime({
-                        targets: char,
-                        color: 'var(--text-color)', // Animate back to the CSS variable color
-                        duration: 300,
-                        easing: 'easeInOutQuad'
+
+                    bioContainer.addEventListener('mouseleave', () => {
+                        anime({
+                            targets: bioChars,
+                            translateX: 0,
+                            translateY: 0,
+                            scale: 1,
+                            duration: 300,
+                            easing: 'easeOutQuad',
+                            delay: anime.stagger(3)
+                        });
                     });
-                });
-            });
+                } else {
+                     // Bio Text Touch Ripple Effect for Mobile
+                    bioContainer.addEventListener('click', (e) => {
+                        const rect = bioContainer.getBoundingClientRect();
+                        const clickX = e.clientX;
+                        const clickY = e.clientY;
+                        const radius = 150; // Radius of the ripple effect
+
+                        bioChars.forEach((char, index) => {
+                            if (!bioCharRects[index]) return;
+
+                            const { left, top, width, height } = bioCharRects[index];
+                            const charCenterX = left + width / 2;
+                            const charCenterY = top + height / 2;
+
+                            const deltaX = clickX - charCenterX;
+                            const deltaY = clickY - charCenterY;
+                            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                            if (distance < radius) {
+                                const maxPush = 20;
+                                const pushX = -(deltaX / distance) * maxPush * (1 - distance / radius);
+                                const pushY = -(deltaY / distance) * maxPush * (1 - distance / radius);
+                                
+                                const delay = distance * 1.5; // Create a ripple effect by delaying based on distance
+                                
+                                anime({
+                                    targets: char,
+                                    translateX: [pushX, 0],
+                                    translateY: [pushY, 0],
+                                    scale: [1.3, 1],
+                                    duration: 800,
+                                    easing: 'easeOutElastic(1, .6)',
+                                    delay: delay
+                                });
+                            }
+                        });
+                    });
+                }
+            }
 
 
             // Card Flips
@@ -1574,16 +1732,20 @@
             const gojoLink = document.getElementById('gojo-link');
             const gojoCloseButton = document.getElementById('gojo-secret-file-close-button');
 
-            viewSecretFileButton.addEventListener('click', (e) => {
-                window.triggerComicFX(e, 'secret');
-                secretFileModal.classList.remove('hidden');
-            });
-
-            gojoLink.addEventListener('click', (e) => {
-                e.stopPropagation();
-                window.triggerComicFX(e, 'secret');
-                gojoSecretFileModal.classList.remove('hidden');
-            });
+            if (viewSecretFileButton) {
+                viewSecretFileButton.addEventListener('click', (e) => {
+                    window.triggerComicFX(e, 'secret');
+                    secretFileModal.classList.remove('hidden');
+                });
+            }
+            
+            if (gojoLink) {
+                gojoLink.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    window.triggerComicFX(e, 'secret');
+                    gojoSecretFileModal.classList.remove('hidden');
+                });
+            }
 
             const closeSecretFile = () => secretFileModal.classList.add('hidden');
             const closeGojoFile = () => gojoSecretFileModal.classList.add('hidden');
@@ -1641,78 +1803,80 @@
             };
 
             const skillGrid = document.getElementById('skill-index-grid');
-            skillGrid.innerHTML = '';
-            Object.entries(allSkills).forEach(([skill, details]) => {
-                const item = document.createElement('div');
-                item.className = 'skill-item p-3 rounded text-center text-lg';
-                item.dataset.skill = skill;
-                item.dataset.category = details.category;
-                item.innerHTML = `<p class="mb-2">${skill}</p><div class="pip-container">${Array(10).fill(0).map((_, i) => `<div class="pip ${i*10 < details.level ? 'filled' : ''}"></div>`).join('')}</div>`;
-                
-                item.addEventListener('mouseenter', (e) => {
-                    if(allSkills[skill]?.description) {
-                        skillTooltip.textContent = allSkills[skill].description;
-                        skillTooltip.style.opacity = '1';
-                    }
-                });
-                item.addEventListener('mousemove', (e) => {
-                    skillTooltip.style.left = `${e.pageX + 15}px`;
-                    skillTooltip.style.top = `${e.pageY + 15}px`;
-                });
-                item.addEventListener('mouseleave', () => {
-                    skillTooltip.style.opacity = '0';
-                });
-
-                item.addEventListener('click', () => {
-                    const { nonTechnical: nonTechnicalChart, technical: technicalChart } = chartInstances;
-                    const skillName = item.dataset.skill;
-                    const skillData = allSkills[skillName];
-                    const isNonTechnical = skillData.category === 'non-technical';
-                    const chart = isNonTechnical ? nonTechnicalChart : technicalChart;
-                    const selClass = isNonTechnical ? 'selected-non-tech' : 'selected-tech';
-                    const idx = chart.data.labels.indexOf(skillName);
-
-                    if (idx > -1) {
-                        chart.data.labels.splice(idx, 1);
-                        chart.data.datasets[0].data.splice(idx, 1);
-                        item.classList.remove('selected-non-tech', 'selected-tech');
-                    } else {
-                        if (chart.data.labels.length >= 6) {
-                            const removedSkill = chart.data.labels.shift();
-                            chart.data.datasets[0].data.shift();
-                            const itemToRemoveClass = document.querySelector(`.skill-item[data-skill="${removedSkill}"]`);
-                            if (itemToRemoveClass) itemToRemoveClass.classList.remove('selected-non-tech', 'selected-tech');
+            if (skillGrid) {
+                skillGrid.innerHTML = '';
+                Object.entries(allSkills).forEach(([skill, details]) => {
+                    const item = document.createElement('div');
+                    item.className = 'skill-item p-3 rounded text-center text-lg';
+                    item.dataset.skill = skill;
+                    item.dataset.category = details.category;
+                    item.innerHTML = `<p class="mb-2">${skill}</p><div class="pip-container">${Array(10).fill(0).map((_, i) => `<div class="pip ${i*10 < details.level ? 'filled' : ''}"></div>`).join('')}</div>`;
+                    
+                    item.addEventListener('mouseenter', (e) => {
+                        if(allSkills[skill]?.description) {
+                            skillTooltip.textContent = allSkills[skill].description;
+                            skillTooltip.style.opacity = '1';
                         }
-                        chart.data.labels.push(skillName);
-                        chart.data.datasets[0].data.push(skillData.level);
-                        item.classList.add(selClass);
-                    }
-                    chart.update();
+                    });
+                    item.addEventListener('mousemove', (e) => {
+                        skillTooltip.style.left = `${e.pageX + 15}px`;
+                        skillTooltip.style.top = `${e.pageY + 15}px`;
+                    });
+                    item.addEventListener('mouseleave', () => {
+                        skillTooltip.style.opacity = '0';
+                    });
+
+                    item.addEventListener('click', () => {
+                        const { nonTechnical: nonTechnicalChart, technical: technicalChart } = chartInstances;
+                        const skillName = item.dataset.skill;
+                        const skillData = allSkills[skillName];
+                        const isNonTechnical = skillData.category === 'non-technical';
+                        const chart = isNonTechnical ? nonTechnicalChart : technicalChart;
+                        const selClass = isNonTechnical ? 'selected-non-tech' : 'selected-tech';
+                        const idx = chart.data.labels.indexOf(skillName);
+
+                        if (idx > -1) {
+                            chart.data.labels.splice(idx, 1);
+                            chart.data.datasets[0].data.splice(idx, 1);
+                            item.classList.remove('selected-non-tech', 'selected-tech');
+                        } else {
+                            if (chart.data.labels.length >= 6) {
+                                const removedSkill = chart.data.labels.shift();
+                                chart.data.datasets[0].data.shift();
+                                const itemToRemoveClass = document.querySelector(`.skill-item[data-skill="${removedSkill}"]`);
+                                if (itemToRemoveClass) itemToRemoveClass.classList.remove('selected-non-tech', 'selected-tech');
+                            }
+                            chart.data.labels.push(skillName);
+                            chart.data.datasets[0].data.push(skillData.level);
+                            item.classList.add(selClass);
+                        }
+                        chart.update();
+                    });
+
+                    skillGrid.appendChild(item);
                 });
 
-                skillGrid.appendChild(item);
-            });
-
-            document.querySelectorAll('.filter-button').forEach(button => {
-                button.addEventListener('click', () => {
-                    document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    const filter = button.dataset.filter;
-                    document.querySelectorAll('.skill-item').forEach(item => {
-                        item.style.display = (filter === 'all' || filter === item.dataset.category) ? 'block' : 'none';
+                document.querySelectorAll('.filter-button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const filter = button.dataset.filter;
+                        document.querySelectorAll('.skill-item').forEach(item => {
+                            item.style.display = (filter === 'all' || filter === item.dataset.category) ? 'block' : 'none';
+                        });
                     });
                 });
-            });
 
-            // Highlight initial skills
-            chartInstances.nonTechnical.data.labels.forEach(skillName => {
-                const item = document.querySelector(`.skill-item[data-skill="${skillName}"]`);
-                if (item) item.classList.add('selected-non-tech');
-            });
-            chartInstances.technical.data.labels.forEach(skillName => {
-                const item = document.querySelector(`.skill-item[data-skill="${skillName}"]`);
-                if (item) item.classList.add('selected-tech');
-            });
+                // Highlight initial skills
+                chartInstances.nonTechnical.data.labels.forEach(skillName => {
+                    const item = document.querySelector(`.skill-item[data-skill="${skillName}"]`);
+                    if (item) item.classList.add('selected-non-tech');
+                });
+                chartInstances.technical.data.labels.forEach(skillName => {
+                    const item = document.querySelector(`.skill-item[data-skill="${skillName}"]`);
+                    if (item) item.classList.add('selected-tech');
+                });
+            }
         }
         
         function setupVerseGlitch() {
@@ -1832,46 +1996,48 @@
                 setTimeout(() => { clearInterval(rainInterval); rainInterval = null; digitalRainCanvas.classList.remove('active'); }, 3000);
             }
 
-            glitchButton.addEventListener('click', () => {
-                isVerseGlitchActive = !isVerseGlitchActive;
-                document.body.classList.toggle('verse-active', isVerseGlitchActive);
-                const allPanels = document.querySelectorAll('.comic-panel:not(#glitch-panel-container .comic-panel)');
-                
-                document.querySelectorAll('h2').forEach(h2 => {
-                    h2.dataset.text = h2.textContent;
-                    h2.classList.toggle('crt-glitch', isVerseGlitchActive);
-                });
-
-                if (isVerseGlitchActive) {
-                    glitchButton.textContent = 'Stabilize Reality';
-                    glitchOverlay.classList.add('active');
-                    crackCanvas.classList.add('active');
-                    crackCanvas.width = window.innerWidth;
-                    crackCanvas.height = window.innerHeight;
-                    glitchedTexts.forEach(el => originalTexts.set(el, el.innerHTML));
-                    scrambleIntervalId = setInterval(() => glitchedTexts.forEach(el => continuouslyScramble(el)), 100);
-                    allPanels.forEach(panel => panel.addEventListener('click', shatterPanel));
-                    document.addEventListener('click', createShardsOnClick);
-                    document.addEventListener('click', createCrack);
-                    drawCracks();
-                } else {
-                    glitchButton.textContent = 'Enter the Verse';
-                    glitchOverlay.classList.remove('active');
-                    crackCanvas.classList.remove('active');
-                    cancelAnimationFrame(crackAnimationId); crackAnimationId = null;
-                    anime({ targets: cracks, life: 0, duration: 1000, easing: 'linear', update: () => { crackCtx.clearRect(0, 0, crackCanvas.width, crackCanvas.height); drawCracks(); }, complete: () => cracks = [] });
-                    startDigitalRain();
-                    clearInterval(scrambleIntervalId); scrambleIntervalId = null;
-                    glitchedTexts.forEach(el => resolveText(el));
-                    document.querySelectorAll('.comic-panel.shattered').forEach(panel => {
-                        panel.classList.remove('shattered');
-                        anime({ targets: panel, scale: 1, rotate: 0, opacity: 1, duration: 500, easing: 'easeOutBack' });
+            if (glitchButton) {
+                glitchButton.addEventListener('click', () => {
+                    isVerseGlitchActive = !isVerseGlitchActive;
+                    document.body.classList.toggle('verse-active', isVerseGlitchActive);
+                    const allPanels = document.querySelectorAll('.comic-panel:not(#glitch-panel-container .comic-panel)');
+                    
+                    document.querySelectorAll('h2').forEach(h2 => {
+                        h2.dataset.text = h2.textContent;
+                        h2.classList.toggle('crt-glitch', isVerseGlitchActive);
                     });
-                    allPanels.forEach(panel => panel.removeEventListener('click', shatterPanel));
-                    document.removeEventListener('click', createShardsOnClick);
-                    document.removeEventListener('click', createCrack);
-                }
-            });
+
+                    if (isVerseGlitchActive) {
+                        glitchButton.textContent = 'Stabilize Reality';
+                        glitchOverlay.classList.add('active');
+                        crackCanvas.classList.add('active');
+                        crackCanvas.width = window.innerWidth;
+                        crackCanvas.height = window.innerHeight;
+                        glitchedTexts.forEach(el => originalTexts.set(el, el.innerHTML));
+                        scrambleIntervalId = setInterval(() => glitchedTexts.forEach(el => continuouslyScramble(el)), 100);
+                        allPanels.forEach(panel => panel.addEventListener('click', shatterPanel));
+                        document.addEventListener('click', createShardsOnClick);
+                        document.addEventListener('click', createCrack);
+                        drawCracks();
+                    } else {
+                        glitchButton.textContent = 'Enter the Verse';
+                        glitchOverlay.classList.remove('active');
+                        crackCanvas.classList.remove('active');
+                        cancelAnimationFrame(crackAnimationId); crackAnimationId = null;
+                        anime({ targets: cracks, life: 0, duration: 1000, easing: 'linear', update: () => { crackCtx.clearRect(0, 0, crackCanvas.width, crackCanvas.height); drawCracks(); }, complete: () => cracks = [] });
+                        startDigitalRain();
+                        clearInterval(scrambleIntervalId); scrambleIntervalId = null;
+                        glitchedTexts.forEach(el => resolveText(el));
+                        document.querySelectorAll('.comic-panel.shattered').forEach(panel => {
+                            panel.classList.remove('shattered');
+                            anime({ targets: panel, scale: 1, rotate: 0, opacity: 1, duration: 500, easing: 'easeOutBack' });
+                        });
+                        allPanels.forEach(panel => panel.removeEventListener('click', shatterPanel));
+                        document.removeEventListener('click', createShardsOnClick);
+                        document.removeEventListener('click', createCrack);
+                    }
+                });
+            }
         }
         
         function setupTerminalAnimation() {
@@ -1950,6 +2116,4 @@
     </script>
 </body>
 </html>
-
-
 
